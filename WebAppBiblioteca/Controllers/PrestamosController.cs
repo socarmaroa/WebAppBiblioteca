@@ -23,6 +23,40 @@ namespace WebAppBiblioteca.Controllers
         {
             return View(await _context.Prestamo.ToListAsync());
         }
+        // GET: Prestamos/ReciboSalida/5
+        public async Task<IActionResult> ReciboSalida(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var prestamo = await _context.Prestamo
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (prestamo == null)
+            {
+                return NotFound();
+            }
+
+            return View(prestamo);
+        }
+        // GET: Prestamos/ReciboEntrada/5
+        public async Task<IActionResult> ReciboEntrada(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var prestamo = await _context.Prestamo
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (prestamo == null)
+            {
+                return NotFound();
+            }
+
+            return View(prestamo);
+        }
 
         // GET: Prestamos/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -54,14 +88,15 @@ namespace WebAppBiblioteca.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FechaPrestamo,FechaEntrega,LibroId")] Prestamo prestamo)
+        public async Task<IActionResult> Create([Bind("Id,LibroId,FechaPrestamo,FechaEntrega")] Prestamo prestamo)
         {
             if (ModelState.IsValid)
             {
                 prestamo.FechaPrestamo = DateTime.Now;
                 _context.Add(prestamo);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("ReciboSalida", prestamo);
+                //return RedirectToAction("Details","Prestamos",prestamo.Id);
             }
             return View(prestamo);
         }
@@ -79,6 +114,7 @@ namespace WebAppBiblioteca.Controllers
             {
                 return NotFound();
             }
+            prestamo.FechaEntrega = DateTime.Now;
             return View(prestamo);
         }
 
@@ -87,7 +123,7 @@ namespace WebAppBiblioteca.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FechaPrestamo,FechaEntrega")] Prestamo prestamo)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,LibroId,FechaPrestamo,FechaEntrega")] Prestamo prestamo)
         {
             if (id != prestamo.Id)
             {
@@ -112,7 +148,9 @@ namespace WebAppBiblioteca.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                prestamo.FechaEntrega = DateTime.Now;
+                //return RedirectToAction(nameof(Index));
+                return RedirectToAction("ReciboEntrada", prestamo);
             }
             return View(prestamo);
         }

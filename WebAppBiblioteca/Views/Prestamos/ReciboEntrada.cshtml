@@ -1,0 +1,30 @@
+﻿@model WebAppBiblioteca.Models.Prestamo
+
+@{
+    ViewData["Title"] = "Recibo Entrada";
+}
+
+<h2>Recibo de entrada del libro</h2>
+
+<div>
+    <h4>Recibo expedio por la biblioteca como evidencia de la entrega del libro por parte del estudiante</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>            
+            @Html.DisplayNameFor(model => model.LibroId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LibroId)
+        </dd>
+        <dt>
+            Recibido el dia:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FechaEntrega)
+        </dd>
+        
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Gestor prestamos</a>
+</div>

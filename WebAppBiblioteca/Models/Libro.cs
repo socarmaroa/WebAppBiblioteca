@@ -35,6 +35,7 @@ namespace WebAppBiblioteca.Models
         [Required]
         [Display(Name = "Dias en los que se puede prestar el libro")]
         public int DiasPrestamo { get; set; }
+        public virtual ICollection<Prestamo> Prestamo { get; set; }
         //public int EmpleadoQuienRegistraId { get; set; }
 
         //public General Area { get; set; }
