@@ -45,6 +45,8 @@ namespace WebAppBiblioteca.Controllers
         // GET: Generals/Create
         public IActionResult Create()
         {
+            ViewData["TipoGeneralId"] = new SelectList(_context.TipoGeneral, "Id", "Nombre");
+            
             return View();
         }
 
@@ -53,7 +55,7 @@ namespace WebAppBiblioteca.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,Descripcion")] General general)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,Descripcion,TipoGeneralId")] General general)
         {
             if (ModelState.IsValid)
             {

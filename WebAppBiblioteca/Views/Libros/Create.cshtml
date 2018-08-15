@@ -1,12 +1,12 @@
 ﻿@model WebAppBiblioteca.Models.Libro
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Registrar Libro";
 }
 
-<h2>Create</h2>
+<h2>Registrar libro nuevo</h2>
 
-<h4>Libro</h4>
+<h4>Registre libro nuevo para la biblioteca, registre cada uno de los datos correspondientes.</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -33,14 +33,26 @@
                 <span asp-validation-for="DiasPrestamo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <label asp-for="UbicacionId" class="control-label"></label>
+                <select asp-for="UbicacionId" class="form-control" asp-items="ViewBag.General"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="AreaId" class="control-label"></label>
+                <select asp-for="AreaId" class="form-control" asp-items="ViewBag.General"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoLibroId" class="control-label"></label>
+                <select asp-for="TipoLibroId" class="form-control" asp-items="ViewBag.General"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-default" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Ver listado de libros</a>
 </div>
 
 @section Scripts {

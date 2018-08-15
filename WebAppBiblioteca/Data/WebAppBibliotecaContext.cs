@@ -14,7 +14,14 @@ namespace WebAppBiblioteca.Models
         {
         }
 
-        public DbSet<WebAppBiblioteca.Models.TipoGeneral> TipoGeneral { get; set; }
+        public DbSet<WebAppBiblioteca.Models.TipoGeneral> TipoGeneral { get; set; }              
+
+        //public DbSet<WebAppBiblioteca.Models.General> GeneralByTipoGeneral(int? idTipoGeneral)
+        //{
+        //    DbSet<WebAppBiblioteca.Models.General> aux=new HasSet<WebAppBiblioteca.Models.General>();
+
+        //    return aux;
+        //}
 
         public DbSet<WebAppBiblioteca.Models.General> General { get; set; }
 

@@ -45,6 +45,7 @@ namespace WebAppBiblioteca.Controllers
         // GET: Prestamos/Create
         public IActionResult Create()
         {
+            ViewData["LibroId"] = new SelectList(_context.Libro, "Id", "Titulo");
             return View();
         }
 
@@ -53,10 +54,11 @@ namespace WebAppBiblioteca.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FechaPrestamo,FechaEntrega")] Prestamo prestamo)
+        public async Task<IActionResult> Create([Bind("Id,FechaPrestamo,FechaEntrega,LibroId")] Prestamo prestamo)
         {
             if (ModelState.IsValid)
             {
+                prestamo.FechaPrestamo = DateTime.Now;
                 _context.Add(prestamo);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

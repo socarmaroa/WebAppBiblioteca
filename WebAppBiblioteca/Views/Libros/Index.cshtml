@@ -1,28 +1,37 @@
 ﻿@model IEnumerable<WebAppBiblioteca.Models.Libro>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Libros";
 }
 
-<h2>Index</h2>
+<h2>Libros registrados en la biblioteca</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Registro nuevo</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>
+            <th align="center">
                 @Html.DisplayNameFor(model => model.Titulo)
             </th>
-            <th>
+            <th align="center">
                 @Html.DisplayNameFor(model => model.Editorial)
             </th>
-            <th>
+            <th align="center">
                 @Html.DisplayNameFor(model => model.Year)
             </th>
-            <th>
+            <th align="center">
                 @Html.DisplayNameFor(model => model.DiasPrestamo)
+            </th>
+            <th align="center">
+                @Html.DisplayNameFor(model => model.UbicacionId)
+            </th>
+            <th align="center">
+                @Html.DisplayNameFor(model => model.AreaId)
+            </th>
+            <th align="center">
+                @Html.DisplayNameFor(model => model.TipoLibroId)
             </th>
             <th></th>
         </tr>
@@ -41,6 +50,15 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DiasPrestamo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UbicacionId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AreaId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoLibroId)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
