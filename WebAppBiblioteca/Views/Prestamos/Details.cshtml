@@ -1,13 +1,13 @@
 ﻿@model WebAppBiblioteca.Models.Prestamo
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalle Prestamo";
 }
 
-<h2>Details</h2>
+<h2>Detalle del prestamo</h2>
 
 <div>
-    <h4>Prestamo</h4>
+    <h4>Se muestra el detalle del prestamo</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -17,13 +17,13 @@
             @Html.DisplayFor(model => model.LibroId)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.FechaPrestamo)
+            Prestado el dia:
         </dt>
         <dd>
             @Html.DisplayFor(model => model.FechaPrestamo)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.FechaEntrega)
+            Entregado el dia:
         </dt>
         <dd>
             @Html.DisplayFor(model => model.FechaEntrega)
@@ -32,5 +32,5 @@
 </div>
 <div>
     @*<a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |*@
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Gestor prestamos</a>
 </div>
