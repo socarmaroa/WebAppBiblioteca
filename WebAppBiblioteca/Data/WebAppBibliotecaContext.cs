@@ -28,5 +28,7 @@ namespace WebAppBiblioteca.Models
         public DbSet<WebAppBiblioteca.Models.Libro> Libro { get; set; }
 
         public DbSet<WebAppBiblioteca.Models.Prestamo> Prestamo { get; set; }
+
+        public DbSet<WebAppBiblioteca.Models.Usuario> Usuario { get; set; }
     }
 }

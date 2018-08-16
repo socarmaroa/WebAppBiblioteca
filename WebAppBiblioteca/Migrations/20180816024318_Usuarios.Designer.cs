@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebAppBiblioteca.Models;
 
 namespace WebAppBiblioteca.Migrations
 {
     [DbContext(typeof(WebAppBibliotecaContext))]
-    partial class WebAppBibliotecaContextModelSnapshot : ModelSnapshot
+    [Migration("20180816024318_Usuarios")]
+    partial class Usuarios
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -158,18 +160,21 @@ namespace WebAppBiblioteca.Migrations
                 {
                     b.HasOne("WebAppBiblioteca.Models.TipoGeneral", "TipoGeneral")
                         .WithMany("datosGenerales")
-                        .HasForeignKey("TipoGeneralId");
+                        .HasForeignKey("TipoGeneralId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("WebAppBiblioteca.Models.Persona", b =>
                 {
                     b.HasOne("WebAppBiblioteca.Models.General", "Genero")
                         .WithMany()
-                        .HasForeignKey("GeneroId");
+                        .HasForeignKey("GeneroId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("WebAppBiblioteca.Models.General", "TipoIdentificacion")
                         .WithMany()
-                        .HasForeignKey("TipoIdentificacionId");
+                        .HasForeignKey("TipoIdentificacionId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("WebAppBiblioteca.Models.Usuario", b =>
